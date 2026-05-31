@@ -64,10 +64,25 @@ export function Contact() {
             ))}
 
             <div className="flex gap-3 pt-2">
-              {[Github, Linkedin, Twitter].map((Icon, i) => (
+              {[
+                {
+                  Icon: Github,
+                  link: "https://github.com/girmajirahul",
+                },
+                {
+                  Icon: Linkedin,
+                  link: "https://www.linkedin.com/in/rahul-girmaji",
+                },
+                {
+                  Icon: Mail,
+                  link: "mailto:rahulgirmaji2505@gmail.com",
+                },
+              ].map(({ Icon, link }, i) => (
                 <motion.a
                   key={i}
-                  href="#"
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.15, y: -3 }}
                   className="p-3 rounded-full glass hover:text-primary transition-colors"
                 >
@@ -174,15 +189,30 @@ export function Footer() {
             <span className="text-gradient font-semibold">React & Passion</span>
           </p>
 
-          <div className="flex gap-3">
-            {[Github, Linkedin, Mail].map((Icon, i) => (
+          <div className="flex gap-3 pt-2">
+            {[
+              {
+                Icon: Github,
+                link: "https://github.com/girmajirahul",
+              },
+              {
+                Icon: Linkedin,
+                link: "https://www.linkedin.com/in/rahul-girmaji",
+              },
+              {
+                Icon: Mail,
+                link: "mailto:rahulgirmaji2505@gmail.com",
+              },
+            ].map(({ Icon, link }, i) => (
               <motion.a
                 key={i}
-                href="#"
-                whileHover={{ scale: 1.2, y: -2 }}
-                className="p-2 rounded-full glass hover:text-primary transition-colors"
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.15, y: -3 }}
+                className="p-3 rounded-full glass hover:text-primary transition-colors"
               >
-                <Icon className="w-4 h-4" />
+                <Icon className="w-5 h-5" />
               </motion.a>
             ))}
           </div>

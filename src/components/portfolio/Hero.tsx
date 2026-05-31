@@ -122,8 +122,8 @@ export function Hero() {
               className="flex items-center gap-4"
             >
               {[
-                { Icon: Github, href: "https://github.com" },
-                { Icon: Linkedin, href: "https://linkedin.com" },
+                { Icon: Github, href: "https://github.com/girmajirahul" },
+                { Icon: Linkedin, href: "https://www.linkedin.com/in/rahul-girmaji"},
                 { Icon: Twitter, href: "https://twitter.com" },
                 { Icon: Mail, href: "mailto:rahulgirmaji2505@gmail.com" },
               ].map(({ Icon, href }, i) => (
