@@ -11,7 +11,7 @@ const projects = [
     Icon: Wallet,
     accent: "var(--neon-blue)",
     github: "https://github.com",
-    demo: "https://example.com",
+    demo: "",
   },
   {
     title: "Portfolio Website",
@@ -19,8 +19,8 @@ const projects = [
     stack: ["React.js", "Tailwind CSS", "EmailJS"],
     Icon: User,
     accent: "var(--neon-purple)",
-    github: "https://github.com",
-    demo: "https://example.com",
+    github: "https://github.com/girmajirahul/new_portfolio",
+    demo: "https://girmaji-rahul.vercel.app/",
   },
   {
     title: "Online Job Portal",
@@ -28,8 +28,8 @@ const projects = [
     stack: ["React.js", "Express.js", "MongoDB", "Node.js"],
     Icon: Briefcase,
     accent: "var(--neon-cyan)",
-    github: "https://github.com",
-    demo: "https://example.com",
+    github: "https://github.com/girmajirahul/JobFrontend",
+    demo: "https://online-job-board-wine.vercel.app/",
   },
 ];
 

@@ -36,9 +36,8 @@ const skillCategories = [
     title: "Tools",
     color: "var(--neon-pink)",
     skills: [
-      { name: "Git", level: 88 },
+      { name: "Git", level: 70 },
       { name: "Postman", level: 90 },
-      { name: "Swagger", level: 75 },
       { name: "VS Code", level: 95 },
     ],
   },
@@ -46,8 +45,8 @@ const skillCategories = [
 
 const marqueeStack = [
   "React", "Node.js", "TypeScript", "MongoDB", "Express", "Tailwind",
-  "Next.js", "Django", "Python", "MySQL", "Git", "Docker",
-  "REST API", "GraphQL", "Vite", "Redux",
+  "Django", "Python", "MySQL", "Git",
+  "REST API", , "Vite", "Redux",
 ];
 
 export function Skills() {

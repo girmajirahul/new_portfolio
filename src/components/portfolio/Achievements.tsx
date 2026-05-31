@@ -105,61 +105,88 @@ export function Education() {
       <div className="container mx-auto px-6 relative z-10">
         <SectionHeading eyebrow="// Education" title="Academic" gradient="Journey" />
 
-        <div className="grid md:grid-cols-2 gap-6 mt-16 max-w-5xl mx-auto">
-          {education.map((e, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.7 }}
-              whileHover={{ y: -6 }}
-              className="glass rounded-2xl p-8 group hover:border-primary/40 transition-colors relative overflow-hidden"
-            >
+        <div className="relative max-w-4xl mx-auto mt-16">
+          {/* Timeline Line */}
+          <div
+            className="absolute left-6 top-0 bottom-0 w-0.5"
+            style={{ background: "var(--gradient-primary)" }}
+          />
+
+          <div className="space-y-10">
+            {education.map((e, i) => (
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-10 -right-10 opacity-10"
+                key={i}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15, duration: 0.7 }}
+                className="relative flex gap-6"
               >
-                <GraduationCap className="w-32 h-32" />
-              </motion.div>
-
-              <div className="flex items-center gap-3 mb-4">
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center"
-                  style={{ background: "var(--gradient-primary)" }}
-                >
-                  <GraduationCap className="w-6 h-6 text-primary-foreground" />
+                {/* Timeline Dot */}
+                <div className="relative z-10 flex-shrink-0">
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center"
+                    style={{
+                      background: "var(--gradient-primary)",
+                      boxShadow: "0 0 20px var(--neon-blue)",
+                    }}
+                  >
+                    <GraduationCap className="w-6 h-6 text-primary-foreground" />
+                  </div>
                 </div>
-                <div className="flex items-center gap-1.5 text-sm text-muted-foreground font-mono">
-                  <Calendar className="w-3.5 h-3.5" /> {e.period}
-                </div>
-              </div>
 
-              <h3 className="text-xl font-bold font-display mb-1">{e.degree}</h3>
-              <p className="text-muted-foreground text-sm mb-6">{e.institute}</p>
-
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium">CGPA</span>
-                <span className="text-lg font-bold text-gradient font-display">{e.cgpa}</span>
-              </div>
-              <div className="h-2 bg-secondary rounded-full overflow-hidden">
+                {/* Card */}
                 <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${e.progress}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                  className="h-full rounded-full"
-                  style={{
-                    background: "var(--gradient-primary)",
-                    boxShadow: "0 0 10px var(--neon-blue)",
-                  }}
-                />
-              </div>
-            </motion.div>
-          ))}
+                  whileHover={{ y: -6 }}
+                  className="glass rounded-2xl p-8 group hover:border-primary/40 transition-colors relative overflow-hidden flex-1"
+                >
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                    className="absolute -top-10 -right-10 opacity-10"
+                  >
+                    <GraduationCap className="w-32 h-32" />
+                  </motion.div>
+
+                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground font-mono mb-4">
+                    <Calendar className="w-3.5 h-3.5" /> {e.period}
+                  </div>
+
+                  <h3 className="text-xl font-bold font-display mb-1">
+                    {e.degree}
+                  </h3>
+
+                  <p className="text-muted-foreground text-sm mb-6">
+                    {e.institute}
+                  </p>
+
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium">CGPA</span>
+                    <span className="text-lg font-bold text-gradient font-display">
+                      {e.cgpa}
+                    </span>
+                  </div>
+
+                  <div className="h-2 bg-secondary rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${e.progress}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.5, ease: "easeOut" }}
+                      className="h-full rounded-full"
+                      style={{
+                        background: "var(--gradient-primary)",
+                        boxShadow: "0 0 10px var(--neon-blue)",
+                      }}
+                    />
+                  </div>
+                  
+                </motion.div>
+              </motion.div>
+            ))}
+            </div>
+          </div>
         </div>
-      </div>
     </section>
   );
 }

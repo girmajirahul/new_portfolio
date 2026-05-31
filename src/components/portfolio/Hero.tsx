@@ -91,7 +91,7 @@ export function Hero() {
               className="flex flex-wrap gap-4 mb-10"
             >
               <a
-                href="/resume.pdf"
+                href="/Rahul_Girmaji.pdf"
                 download
                 className="group inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold text-primary-foreground transition-all hover:scale-105 hover:shadow-[0_0_30px_var(--neon-blue)]"
                 style={{ background: "var(--gradient-primary)" }}
