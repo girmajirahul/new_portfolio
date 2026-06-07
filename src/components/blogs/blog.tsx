@@ -19,10 +19,10 @@ export default function BlogPage() {
 
   // Set page title and metadata
   React.useEffect(() => {
-    document.title = "Journal — Rahul Girmaji";
+    document.title = "Insights — Rahul Girmaji";
     document.querySelector('meta[name="description"]')?.setAttribute(
       "content",
-      "Essays and reflections on engineering, product, and craft by Rahul Girmaji."
+      "Insights and reflections on technology, personal growth, and meaningful relationships by Rahul Girmaji."
     );
   }, []);
 
@@ -61,12 +61,11 @@ export default function BlogPage() {
               className="mt-5 text-5xl md:text-7xl leading-[1.02]"
               style={{ fontFamily: '"DM Serif Display", serif' }}
             >
-              Essays, notes, &<br />
+              Ideas, lessons , &<br />
               <span className="text-gradient italic">reflections.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-              A quiet corner for long-form writing on software, design, and the
-              craft of building things that last.
+             Exploring technology, personal growth, meaningful relationships, and the experiences that shape both our careers and our lives.
             </p>
           </motion.header>
 
