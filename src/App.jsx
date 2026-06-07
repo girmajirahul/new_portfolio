@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "@/pages/Home";
+import BlogPage from "@/components/blogs/blog";
+import PostPage from "@/components/blogs/blogDetails";
 
 /**
  * Root application component.
@@ -12,6 +14,7 @@ import Home from "@/pages/Home";
  *       Home.jsx
  *     components/
  *       portfolio/         <- portfolio sections (Hero, About, Projects, ...)
+ *       blogs/             <- blog pages (BlogPage, PostPage)
  *     assets/              <- images and static assets
  *     index.css            <- global styles + Tailwind v4
  */
@@ -19,6 +22,8 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/:slug" element={<PostPage />} />
     </Routes>
   );
 }

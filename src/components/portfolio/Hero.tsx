@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { Download, Mail, FolderGit2, Github, Linkedin, Twitter, ArrowDown } from "lucide-react";
+import { Download, Mail, FolderGit2, Github, Linkedin, Twitter, ArrowDown, Eye } from "lucide-react";
 import profileImg from "@/assets/profile.png";
 import { ParticleField } from "./ParticleField";
 
@@ -100,11 +100,11 @@ export function Hero() {
                 Download Resume
               </a>
               <a
-                href="#contact"
+                href="/blog"
                 className="inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold glass-strong hover:bg-white/10 transition-all hover:scale-105"
               >
-                <Mail className="w-4 h-4" />
-                Contact Me
+                <Eye className="w-4 h-4" />
+               View Insights
               </a>
               <a
                 href="#projects"
