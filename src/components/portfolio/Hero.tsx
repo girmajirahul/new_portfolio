@@ -107,11 +107,11 @@ export function Hero() {
                View Insights
               </a>
               <a
-                href="#projects"
+                href="/tech"
                 className="inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold border border-border hover:border-primary transition-all hover:scale-105"
               >
                 <FolderGit2 className="w-4 h-4" />
-                View Projects
+               Tech Notes
               </a>
             </motion.div>
 

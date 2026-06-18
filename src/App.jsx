@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import Home from "@/pages/Home";
 import BlogPage from "@/components/blogs/blog";
 import PostPage from "@/components/blogs/blogDetails";
+import TechIndex from "@/components/blogs/tech";
+import TechPostPage from "./components/blogs/techDetails";
 
 /**
  * Root application component.
@@ -24,6 +26,11 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/blog/:slug" element={<PostPage />} />
+      <Route path="/tech" element={<TechIndex />} />
+
+      <Route
+        path="/tech/:slug" element={<TechPostPage />}
+      />
     </Routes>
   );
 }
