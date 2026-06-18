@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag } from "lucide-react";
-import { Navbar } from "@/components/portfolio/Navbar";
 import { ScrollProgress } from "@/components/portfolio/Effects";
 import { motion } from "framer-motion";
 import { getPost, Post, posts } from "./data/post";
+import { Navbar } from "./Navbar";
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-US", {

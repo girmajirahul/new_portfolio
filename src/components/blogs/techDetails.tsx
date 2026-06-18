@@ -12,9 +12,9 @@ import {
 } from "lucide-react";
 
 import { getTechPost, techPosts, type TechPost } from "./data/techPosts";
-import { Navbar } from "@/components/portfolio/Navbar";
 import { ScrollProgress } from "@/components/portfolio/Effects";
 import CodeBlock from "./CodeBlock";
+import { Navbar } from "./Navbar";
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-US", {
