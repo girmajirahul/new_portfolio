@@ -5,6 +5,7 @@ import { ScrollProgress } from "@/components/portfolio/Effects";
 import { motion } from "framer-motion";
 import { posts } from "./data/post";
 import { Navbar } from "./Navbar";
+import { useBlogs } from "@/hooks/useBlogs";
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-US", {
@@ -15,7 +16,9 @@ function formatDate(iso: string) {
 }
 
 export default function BlogPage() {
-  const sorted = [...posts].sort((a, b) => b.date.localeCompare(a.date));
+  const { blogs, loading, error, refetch } = useBlogs();  
+  const sorted = [...blogs].sort((a, b) => b.date.localeCompare(a.date));
+  
 
   // Set page title and metadata
   React.useEffect(() => {

@@ -15,6 +15,8 @@ import { getTechPost, techPosts, type TechPost } from "./data/techPosts";
 import { ScrollProgress } from "@/components/portfolio/Effects";
 import CodeBlock from "./CodeBlock";
 import { Navbar } from "./Navbar";
+import { useTechBySlug } from "@/hooks/useTechSlug";
+import { useTech } from "@/hooks/useTech";
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-US", {
@@ -26,13 +28,24 @@ function formatDate(iso: string) {
 
 export default function TechPostPage() {
   const { slug } = useParams<{ slug: string }>();
-
-  const post = getTechPost(slug || "") as TechPost | undefined;
+  const { data, loading, error } = useTechBySlug(slug || "");
+  const {techblogs}=useTech();
+  const post = data
 
   if (!post) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
-        <div className="text-center">
+        {loading ? (<div className="text-center">
+          <p
+            className="text-4xl text-gradient"
+            style={{ fontFamily: '"DM Serif Display", serif' }}
+          >
+            Loading please wait
+          </p>
+
+          
+        </div>):(
+          <div className="text-center">
           <p
             className="text-4xl text-gradient"
             style={{ fontFamily: '"DM Serif Display", serif' }}
@@ -46,12 +59,13 @@ export default function TechPostPage() {
           >
             Back to Tech Notes
           </Link>
-        </div>
+        </div>)}
+        
       </div>
     );
   }
 
-  const others = techPosts
+  const others = techblogs
     .filter((p) => p.slug !== post.slug)
     .slice(0, 2);
 

@@ -3,8 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag } from "lucide-react";
 import { ScrollProgress } from "@/components/portfolio/Effects";
 import { motion } from "framer-motion";
-import { getPost, Post, posts } from "./data/post";
 import { Navbar } from "./Navbar";
+import { useBlogBySlug } from "@/hooks/useBlogSlug";
+import { useBlogs } from "@/hooks/useBlogs";
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-US", {
@@ -16,7 +17,10 @@ function formatDate(iso: string) {
 
 export default function PostPage() {
   const { slug } = useParams<{ slug: string }>();
-  const post = slug ? getPost(slug) : null;
+  const { data, loading, error } = useBlogBySlug(slug || "")
+  const { blogs } = useBlogs()
+  const post = data
+
 
   React.useEffect(() => {
     if (post) {
@@ -31,22 +35,36 @@ export default function PostPage() {
   if (!post) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
-        <div className="text-center">
-          <p
-            className="text-4xl text-gradient"
-            style={{ fontFamily: '"DM Serif Display", serif' }}
-          >
-            Essay not found
-          </p>
-          <Link to="/blog" className="mt-4 inline-block text-sm text-accent underline">
-            Back to the Journal
-          </Link>
-        </div>
+        {loading ? (
+          <div className="text-center">
+            <p
+              className="text-4xl text-gradient"
+              style={{ fontFamily: '"DM Serif Display", serif' }}
+            >
+              Loading please wait
+            </p>
+
+          </div>
+
+        ) : (
+          <div className="text-center">
+            <p
+              className="text-4xl text-gradient"
+              style={{ fontFamily: '"DM Serif Display", serif' }}
+            >
+              Essay not found
+            </p>
+            <Link to="/blog" className="mt-4 inline-block text-sm text-accent underline">
+              Back to the Journal
+            </Link>
+          </div>
+        )}
+
       </div>
     );
   }
 
-  const others = posts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  const others = blogs.filter((p) => p.slug !== post.slug).slice(0, 2);
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">

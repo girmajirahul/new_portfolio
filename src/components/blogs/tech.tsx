@@ -9,10 +9,10 @@ import {
   Terminal,
 } from "lucide-react";
 
-import { techPosts } from "./data/techPosts";
 import { ScrollProgress } from "../portfolio/Effects";
 import React from "react";
 import { Navbar } from "./Navbar";
+import { useTech } from "@/hooks/useTech";
 
 function formatDate(iso) {
   return new Date(iso).toLocaleDateString("en-US", {
@@ -23,7 +23,9 @@ function formatDate(iso) {
 }
 
 export default function TechIndex() {
-  const sorted = [...techPosts].sort((a, b) =>
+  const { techblogs, loading, error, refetch } = useTech();
+  
+  const sorted = [...techblogs].sort((a, b) =>
     a.date < b.date ? 1 : -1
   );
 
