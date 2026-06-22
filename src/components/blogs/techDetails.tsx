@@ -17,6 +17,7 @@ import CodeBlock from "./CodeBlock";
 import { Navbar } from "./Navbar";
 import { useTechBySlug } from "@/hooks/useTechSlug";
 import { useTech } from "@/hooks/useTech";
+import React from "react";
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-US", {
@@ -29,8 +30,18 @@ function formatDate(iso: string) {
 export default function TechPostPage() {
   const { slug } = useParams<{ slug: string }>();
   const { data, loading, error } = useTechBySlug(slug || "");
-  const {techblogs}=useTech();
+  const { techblogs } = useTech();
   const post = data
+
+
+  React.useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth", // optional, use "auto" for instant
+    });
+  }, [slug]);
+
 
   if (!post) {
     return (
@@ -43,24 +54,24 @@ export default function TechPostPage() {
             Loading please wait
           </p>
 
-          
-        </div>):(
-          <div className="text-center">
-          <p
-            className="text-4xl text-gradient"
-            style={{ fontFamily: '"DM Serif Display", serif' }}
-          >
-            Post not found
-          </p>
 
-          <Link
-            to="/tech"
-            className="mt-4 inline-block text-sm text-accent underline"
-          >
-            Back to Tech Notes
-          </Link>
-        </div>)}
-        
+        </div>) : (
+          <div className="text-center">
+            <p
+              className="text-4xl text-gradient"
+              style={{ fontFamily: '"DM Serif Display", serif' }}
+            >
+              Post not found
+            </p>
+
+            <Link
+              to="/tech"
+              className="mt-4 inline-block text-sm text-accent underline"
+            >
+              Back to Tech Notes
+            </Link>
+          </div>)}
+
       </div>
     );
   }
@@ -82,7 +93,7 @@ export default function TechPostPage() {
       />
 
       <main className="container mx-auto px-6 pt-32 pb-24">
-        <article className="mx-auto max-w-3xl">
+        <article className="mx-auto max-w-6xl">
           <Link
             to="/tech"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -183,11 +194,10 @@ export default function TechPostPage() {
                   return (
                     <div
                       key={i}
-                      className={`my-6 flex gap-3 rounded-xl border p-4 text-base ${
-                        warn
-                          ? "border-yellow-500/30 bg-yellow-500/5 text-yellow-100/90"
-                          : "border-accent/30 bg-accent/5 text-foreground/90"
-                      }`}
+                      className={`my-6 flex gap-3 rounded-xl border p-4 text-base ${warn
+                        ? "border-yellow-500/30 bg-yellow-500/5 text-yellow-100/90"
+                        : "border-accent/30 bg-accent/5 text-foreground/90"
+                        }`}
                     >
                       {warn ? (
                         <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-yellow-400" />

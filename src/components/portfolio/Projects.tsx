@@ -2,31 +2,30 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Github, ExternalLink, Wallet, User, Briefcase } from "lucide-react";
 import { useRef, type MouseEvent } from "react";
 import { SectionHeading } from "./About";
-
 const projects = [
   {
-    title: "Expense Manager",
-    desc: "A full-featured expense tracking application with monthly summaries, CRUD operations, and robust data validation.",
-    stack: ["JSP Servlet", "SQL Server", "Bootstrap"],
-    Icon: Wallet,
+    title: "Blog - Content Management System",
+    desc: "A blogging platform built with React, Node.js, Express, and MongoDB.",
+    stack: ["Reactjs", "Nodejs", "Expressjs", "MongoDB"],
+    image: "/projects/blog-cms.png",
     accent: "var(--neon-blue)",
     github: "https://github.com",
     demo: "",
   },
   {
     title: "Portfolio Website",
-    desc: "Premium animated portfolio site built with React and Framer Motion. Features contact form integration via EmailJS.",
+    desc: "Premium animated portfolio site built with React and Framer Motion.",
     stack: ["React.js", "Tailwind CSS", "EmailJS"],
-    Icon: User,
+    image: "/projects/portfolio.png",
     accent: "var(--neon-purple)",
     github: "https://github.com/girmajirahul/new_portfolio",
     demo: "https://girmaji-rahul.vercel.app/",
   },
   {
     title: "Online Job Portal",
-    desc: "MERN-stack job portal with authentication, job posting, search & filtering, and end-to-end application management.",
+    desc: "MERN-stack job portal with authentication and job management.",
     stack: ["React.js", "Express.js", "MongoDB", "Node.js"],
-    Icon: Briefcase,
+    image: "/projects/job-portal.png",
     accent: "var(--neon-cyan)",
     github: "https://github.com/girmajirahul/JobFrontend",
     demo: "https://online-job-board-wine.vercel.app/",
@@ -87,19 +86,14 @@ function ProjectCard({ p, i }: { p: (typeof projects)[number]; i: number }) {
         }}
       >
         <div className="absolute inset-0 grid-bg opacity-30" />
-        <motion.div
-          animate={{ y: [0, -8, 0] }}
-          transition={{ duration: 4, repeat: Infinity }}
-          className="relative z-10"
+        <motion.img
+          src={p.image}
+          alt={p.title}
+          animate={{ y: [0, -6, 0] }}
+          transition={{ duration: 5, repeat: Infinity }}
+          className="w-full h-full object-cover relative z-10"
           style={{ transform: "translateZ(40px)" }}
-        >
-          <div
-            className="w-24 h-24 rounded-2xl flex items-center justify-center"
-            style={{ background: "var(--gradient-primary)", boxShadow: `0 20px 60px ${p.accent}66` }}
-          >
-            <p.Icon className="w-12 h-12 text-primary-foreground" />
-          </div>
-        </motion.div>
+        />
       </div>
 
       <h3 className="text-2xl font-bold font-display mb-2" style={{ transform: "translateZ(20px)" }}>

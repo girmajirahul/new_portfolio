@@ -32,6 +32,14 @@ export default function PostPage() {
     }
   }, [post]);
 
+  React.useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth", // optional, use "auto" for instant
+    });
+  }, [slug]);
+
   if (!post) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
@@ -79,7 +87,7 @@ export default function PostPage() {
       />
 
       <main className="container mx-auto px-6 pt-32 pb-24">
-        <article className="mx-auto max-w-3xl">
+        <article className="mx-auto max-w-6xl">
           <Link
             to="/blog"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"

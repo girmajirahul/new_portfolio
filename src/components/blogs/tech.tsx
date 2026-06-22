@@ -50,7 +50,7 @@ export default function TechIndex() {
       />
 
       <main className="container mx-auto px-6 pt-32 pb-24">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-6xl">
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -62,7 +62,7 @@ export default function TechIndex() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mx-auto max-w-3xl"
+            className="mx-auto max-w-6xl"
           >
             <div className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs uppercase tracking-[0.2em] text-accent">
               <Terminal className="h-3.5 w-3.5" />
@@ -79,7 +79,7 @@ export default function TechIndex() {
               patterns & performance notes.
             </h1>
 
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
+            <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-6xl">
               Deeper, more technical posts — with syntax-highlighted
               snippets you can actually read.
             </p>
@@ -95,7 +95,7 @@ export default function TechIndex() {
             </div>
           </motion.header>
 
-          <section className="mt-16 mx-auto max-w-3xl space-y-6">
+          <section className="mt-16 mx-auto max-w-6xl space-y-6">
             {sorted.map((post, i) => (
               <motion.article
                 key={post.slug}
