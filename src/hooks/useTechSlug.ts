@@ -11,7 +11,7 @@ export function useTechBySlug(slug: string) {
       setLoading(true);
       setError(null);
 
-      const response = await axiosInstance.get(`/api/tech/${slug}`);
+      const response = await axiosInstance.get(`/api/tech/slug/${slug}`);
 
       setData(response.data.data);
     } catch (err: any) {

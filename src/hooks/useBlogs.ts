@@ -13,8 +13,15 @@ type Blog = {
   content: string[];
 };
 
-export function useBlogs() {
+export function useBlogs(page:number=1,limit:number=2) {
   const [blogs, setData] = useState<Blog[]>([]);
+   const [pagination, setPagination] = useState({
+    currentPage: 1,
+    totalPages: 1,
+    totalBlogs: 0,
+    hasNextPage: false,
+    hasPreviousPage: false,
+  });
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -23,8 +30,16 @@ export function useBlogs() {
       setLoading(true);
       setError(null);
 
-      const response = await axiosInstance.get("/api/blogs");
-      setData(response.data.data);
+      const response = await axiosInstance.get(`/api/blogs?page=${page}&limit=${limit}`);
+      setData(response.data.data.data);
+       const result = response.data.data;
+       setPagination({
+        currentPage: result.currentPage,
+        totalPages: result.totalPages,
+        totalBlogs: result.totalBlogs,
+        hasNextPage: result.hasNextPage,
+        hasPreviousPage: result.hasPreviousPage,
+      });
     } catch (err: any) {
       setError(err.message || "Something went wrong");
     } finally {
@@ -34,7 +49,7 @@ export function useBlogs() {
 
   useEffect(() => {
     fetchBlogs();
-  }, []);
+  }, [page,limit]);
 
-  return { blogs, loading, error, refetch: fetchBlogs };
+  return { blogs,pagination, loading, error, refetch: fetchBlogs };
 }

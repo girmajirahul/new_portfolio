@@ -25,7 +25,7 @@ export function useBlogBySlug(slug: string) {
       setError(null);
 
       const response = await axiosInstance.get(
-        `api/blogs/${slug}`
+        `api/blogs/slug/${slug}`
       );
 
       setData(response.data.data);

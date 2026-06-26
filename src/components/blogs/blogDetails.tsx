@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag } from "lucide-react";
 import { ScrollProgress } from "@/components/portfolio/Effects";
@@ -16,9 +16,12 @@ function formatDate(iso: string) {
 }
 
 export default function PostPage() {
+  const [page,setPage]=useState(1);
+  const [limit,setLimit]=useState(5);
+
   const { slug } = useParams<{ slug: string }>();
   const { data, loading, error } = useBlogBySlug(slug || "")
-  const { blogs } = useBlogs()
+  const { blogs } = useBlogs(page,limit)
   const post = data
 
 

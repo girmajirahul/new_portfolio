@@ -23,8 +23,12 @@ function formatDate(iso) {
 }
 
 export default function TechIndex() {
-  const { techblogs, loading, error, refetch } = useTech();
-  
+  const [page, setPage] = React.useState(1);
+
+  const limit = 5;
+
+  const { techblogs, pagination } = useTech(page, limit);
+
   const sorted = [...techblogs].sort((a, b) =>
     a.date < b.date ? 1 : -1
   );
@@ -165,6 +169,77 @@ export default function TechIndex() {
               </motion.article>
             ))}
           </section>
+          {pagination.totalPages > 1 && (
+            <div className="mt-16 flex flex-col md:flex-row items-center justify-between gap-6">
+
+              {/* Previous */}
+
+              <button
+                disabled={!pagination.hasPreviousPage}
+                onClick={() => {
+                  setPage((p) => p - 1);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className={`px-5 py-2.5 rounded-xl border transition-all
+      ${pagination.hasPreviousPage
+                    ? "glass hover:border-accent hover:text-accent"
+                    : "opacity-40 cursor-not-allowed"
+                  }`}
+              >
+                ← Previous
+              </button>
+
+              {/* Numbers */}
+
+              <div className="flex items-center flex-wrap justify-center gap-2">
+
+                {Array.from(
+                  { length: pagination.totalPages },
+                  (_, i) => i + 1
+                ).map((num) => (
+                  <button
+                    key={num}
+                    onClick={() => {
+                      setPage(num);
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      });
+                    }}
+                    className={`w-11 h-11 rounded-full transition-all duration-300
+          ${num === page
+                        ? "bg-accent text-white shadow-lg"
+                        : "glass hover:bg-accent/10 hover:border-accent"
+                      }`}
+                  >
+                    {num}
+                  </button>
+                ))}
+
+              </div>
+
+              {/* Next */}
+
+              <button
+                disabled={!pagination.hasNextPage}
+                onClick={() => {
+                  setPage((p) => p + 1);
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                }}
+                className={`px-5 py-2.5 rounded-xl border transition-all
+      ${pagination.hasNextPage
+                    ? "glass hover:border-accent hover:text-accent"
+                    : "opacity-40 cursor-not-allowed"
+                  }`}
+              >
+                Next →
+              </button>
+
+            </div>
+          )}
         </div>
       </main>
     </div>
