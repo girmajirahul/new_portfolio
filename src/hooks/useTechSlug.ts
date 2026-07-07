@@ -6,6 +6,7 @@ export function useTechBySlug(slug: string) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  
   const fetchTech = async () => {
     try {
       setLoading(true);
