@@ -2,19 +2,66 @@ import { motion } from "framer-motion";
 import { useState, type FormEvent } from "react";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Check } from "lucide-react";
 import { SectionHeading } from "./About";
+import { toast } from "sonner";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = (e: FormEvent) => {
+  // const onSubmit = (e: FormEvent) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //     setSent(true);
+  //     setTimeout(() => setSent(false), 4000);
+  //   }, 1200);
+  // };
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+
+    const form = e.currentTarget;
+
+    const formData = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      subject: (form.elements.namedItem("subject") as HTMLInputElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
+
+    try {
+      setLoading(true);
+
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
       setSent(true);
-      setTimeout(() => setSent(false), 4000);
-    }, 1200);
+      toast.success("Message sent successfully! 🎉", {
+        description: "Thanks for contacting me. I'll get back to you soon.",
+      });
+
+
+      form.reset();
+
+      setTimeout(() => {
+        setSent(false);
+      }, 4000);
+    } catch (error) {
+      console.error("Contact form error:", error);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -101,11 +148,11 @@ export function Contact() {
             className="glass-strong rounded-3xl p-8 space-y-5 relative overflow-hidden"
           >
             <div className="grid md:grid-cols-2 gap-5">
-              <FloatingInput label="Your Name" type="text" required />
-              <FloatingInput label="Email Address" type="email" required />
+              <FloatingInput label="Your Name" name="name" type="text" required />
+              <FloatingInput label="Email Address" name="email" type="email" required />
             </div>
-            <FloatingInput label="Subject" type="text" required />
-            <FloatingTextarea label="Message" required />
+            <FloatingInput label="Subject" name="subject" type="text" required />
+            <FloatingTextarea label="Message" name="message" required />
 
             <motion.button
               type="submit"

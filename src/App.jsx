@@ -4,31 +4,25 @@ import BlogPage from "@/components/blogs/blog";
 import PostPage from "@/components/blogs/blogDetails";
 import TechIndex from "@/components/blogs/tech";
 import TechPostPage from "./components/blogs/techDetails";
+import { Toaster } from "sonner";
 
-/**
- * Root application component.
- *
- * Project structure:
- *   src/
- *     main.jsx             <- Vite entry, mounts <App /> inside <BrowserRouter>
- *     App.jsx              <- this file (route table)
- *     pages/               <- top-level pages
- *       Home.jsx
- *     components/
- *       portfolio/         <- portfolio sections (Hero, About, Projects, ...)
- *       blogs/             <- blog pages (BlogPage, PostPage)
- *     assets/              <- images and static assets
- *     index.css            <- global styles + Tailwind v4
- */
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/blog" element={<BlogPage />} />
-      <Route path="/blog/:slug" element={<PostPage />} />
-      <Route path="/tech" element={<TechIndex />} />
-      <Route path="/tech/:slug" element={<TechPostPage />}/>
+    <>
+      <Toaster
+        position="top-right"
+        richColors
+        closeButton
+        duration={4000}
+      />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<PostPage />} />
+        <Route path="/tech" element={<TechIndex />} />
+        <Route path="/tech/:slug" element={<TechPostPage />} />
+      </Routes>
 
-    </Routes>
+    </>
   );
 }
