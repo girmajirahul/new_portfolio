@@ -17,10 +17,10 @@ export default function App() {
       />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/blog" element={<BlogPage />} />
+        {/* <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<PostPage />} />
         <Route path="/tech" element={<TechIndex />} />
-        <Route path="/tech/:slug" element={<TechPostPage />} />
+        <Route path="/tech/:slug" element={<TechPostPage />} /> */}
       </Routes>
 
     </>

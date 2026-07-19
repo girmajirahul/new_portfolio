@@ -99,7 +99,7 @@ export function Hero() {
                 <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
                 Download Resume
               </a>
-              <a
+              {/* <a
                 href="/blog"
                 className="inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold glass-strong hover:bg-white/10 transition-all hover:scale-105"
               >
@@ -112,7 +112,7 @@ export function Hero() {
               >
                 <FolderGit2 className="w-4 h-4" />
                Tech Notes
-              </a>
+              </a> */}
             </motion.div>
 
             <motion.div
@@ -176,7 +176,7 @@ export function Hero() {
                 />
               </div>
               {/* Floating tech badges */}
-              {["React", "Node", "Mongo", "TS"].map((t, i) => {
+              {/* {["React", "Node", "Mongo", "TS"].map((t, i) => {
                 const angle = (i / 4) * Math.PI * 2;
                 return (
                   <motion.div
@@ -193,7 +193,7 @@ export function Hero() {
                     {t}
                   </motion.div>
                 );
-              })}
+              })} */}
             </div>
           </motion.div>
         </div>
