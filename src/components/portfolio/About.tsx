@@ -48,13 +48,11 @@ export function About() {
                 React.js, Node.js, MongoDB, SQL Server and REST APIs.
               </p>
               <p>
-                I'm passionate about building responsive, high-performance web applications
-                with intuitive UX and scalable frontend architectures. Currently working as
-                a Frontend Developer at BhojSoft Solutions and pursuing my MCA.
+                I’ve completed my MCA in 2026 and currently work as a Frontend Developer at BhojSoft Solutions, continuously exploring better ways to build, design, and ship impactful web applications
               </p>
               <p>
-                When I'm not coding, you'll find me exploring new design trends, contributing
-                to open source, and pushing my craft toward Awwwards-level polish.
+               Outside of work, I explore new technologies and design trends, contribute to open source, and 
+                obsess over the small details that turn a good interface into a great one.
               </p>
             </div>
           </motion.div>
