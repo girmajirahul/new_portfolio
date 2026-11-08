@@ -17,9 +17,9 @@ const skillCategories = [
     title: "Backend",
     color: "var(--neon-purple)",
     skills: [
-      { name: "Node.js", level: 85 },
-      { name: "Express.js", level: 82 },
-      { name: "Django", level: 70 },
+      { name: "Node.js", level: 70 },
+      { name: "Express.js", level: 70 },
+      { name: "Django", level: 50 },
       { name: "REST APIs", level: 88 },
     ],
   },
@@ -36,18 +36,45 @@ const skillCategories = [
     title: "Tools",
     color: "var(--neon-pink)",
     skills: [
-      { name: "Git", level: 70 },
+      { name: "Git", level: 80 },
       { name: "Postman", level: 90 },
-      { name: "VS Code", level: 95 },
+      { name: "VS Code", level: 100 },
     ],
   },
 ];
 
+import {
+  SiReact,
+  SiNodedotjs,
+  SiTypescript,
+  SiMongodb,
+  SiExpress,
+  SiTailwindcss,
+  SiDjango,
+  SiPython,
+  SiMysql,
+  SiGit,
+  SiPostman,
+  SiVite,
+  SiRedux,
+} from "react-icons/si";
+
 const marqueeStack = [
-  "React", "Node.js", "TypeScript", "MongoDB", "Express", "Tailwind",
-  "Django", "Python", "MySQL", "Git",
-  "REST API", , "Vite", "Redux",
+  { name: "React", icon: SiReact, color: "#61DAFB" },
+  { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  { name: "Express", icon: SiExpress, color: "#ffffff" },
+  { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "Django", icon: SiDjango, color: "#092E20" },
+  { name: "Python", icon: SiPython, color: "#3776AB" },
+  { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+  { name: "Git", icon: SiGit, color: "#F05032" },
+  { name: "Postman", icon: SiPostman, color: "#FF6C37" },
+  { name: "Vite", icon: SiVite, color: "#646CFF" },
+  { name: "Redux", icon: SiRedux, color: "#764ABC" },
 ];
+
 
 export function Skills() {
   return (
@@ -106,19 +133,28 @@ export function Skills() {
           <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-background to-transparent" />
           <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-background to-transparent" />
           <div className="flex animate-marquee whitespace-nowrap gap-4">
-            {[...marqueeStack, ...marqueeStack].map((t, i) => (
-              <div
-                key={i}
-                className="inline-flex items-center gap-2 glass rounded-full px-6 py-3 font-mono text-sm font-semibold"
-              >
-                <span
-                  className="w-2 h-2 rounded-full"
-                  style={{ background: "var(--gradient-primary)" }}
-                />
-                {t}
-              </div>
-            ))}
+            {[...marqueeStack, ...marqueeStack].map((tech, i) => {
+              const Icon = tech.icon;
+
+              return (
+                <div
+                  key={`${tech.name}-${i}`}
+                  className="inline-flex items-center gap-3 glass rounded-full px-6 py-3 font-mono text-sm font-semibold"
+                >
+                  <Icon
+                    size={20}
+                    style={{
+                      color: tech.color,
+                      filter: `drop-shadow(0 0 6px ${tech.color})`,
+                    }}
+                  />
+
+                  <span>{tech.name}</span>
+                </div>
+              );
+            })}
           </div>
+
         </div>
       </div>
     </section>

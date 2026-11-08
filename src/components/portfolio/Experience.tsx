@@ -15,6 +15,18 @@ const experiences = [
       "Improved maintainability and UI consistency across modules",
     ],
   },
+  {
+    company: "Freelance web developer",
+    role: "Self Employed",
+    period: "June 2025 — Dec 2025",
+    points: [
+      "Developed responsive websites using React and TypeScript.",
+      "Integrated REST APIs and backend services.",
+      "Implemented authentication and database integration.",
+      "Deployed applications using Vercel.",
+      "Improved maintainability and UI consistency across modules",
+    ],
+  },
 ];
 
 export function Experience() {

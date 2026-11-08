@@ -84,7 +84,7 @@ const education = [
     degree: "Master of Computer Applications (MCA)",
     institute: "Pune Cambridge Institute of Management & Computer Application",
     period: "Graduating 2026",
-    cgpa: "8.0 / 10",
+    cgpa: "8.34 / 10",
     progress: 80,
   },
   {

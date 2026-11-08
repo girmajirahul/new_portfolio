@@ -4,9 +4,10 @@ import { About } from "@/components/portfolio/About";
 import { Skills } from "@/components/portfolio/Skills";
 import { Experience } from "@/components/portfolio/Experience";
 import { Projects } from "@/components/portfolio/Projects";
-import { Achievements, Education } from "@/components/portfolio/Achievements";
+// import { Achievements, Education } from "@/components/portfolio/Achievements";
 import { Contact, Footer } from "@/components/portfolio/Contact";
 import { ScrollProgress } from "@/components/portfolio/Effects";
+import { AchievementsEducation } from "@/components/portfolio/AchievementsEducation";
 
 export default function Home() {
   return (
@@ -19,8 +20,9 @@ export default function Home() {
         <Skills />
         <Experience />
         <Projects />
-        <Achievements />
-        <Education />
+        <AchievementsEducation />
+        {/* <Achievements />
+        <Education /> */}
         <Contact />
       </main>
       <Footer />
