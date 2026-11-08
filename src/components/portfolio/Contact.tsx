@@ -33,7 +33,7 @@ export function Contact() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch("https://blog-backend-rho-one.vercel.app/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
